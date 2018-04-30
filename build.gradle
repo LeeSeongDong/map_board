@@ -1,0 +1,57 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+def ver = [
+        java: 1.8,
+        spring: '2.0.0.RELEASE'
+]
+
+group = 'spring-study'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = ver.java
+targetCompatibility = ver.java
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    providedRuntime
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.RELEASE")
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources", "src/main/java"]
+        }
+    }
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: ver.spring
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: ver.spring
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: ver.spring
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: ver.spring
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: ver.spring
+
+    compileOnly('org.projectlombok:lombok')
+
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.45'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.5'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '1.3.0'
+}
