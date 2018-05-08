@@ -17,3 +17,7 @@ hs_err_pid*
 .gradle
 /build/
 /reports
+
+/webpack/node_modules/
+/src/main/webapp/resources/vue/
+/webpack/package-lock.json

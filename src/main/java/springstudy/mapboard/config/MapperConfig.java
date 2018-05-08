@@ -1,4 +1,4 @@
-package springstudy.mapboard;
+package springstudy.mapboard.config;
 import javax.sql.DataSource;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
